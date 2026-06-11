@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4f46e5">
+  <title>L in the Castle — Software &amp; Mobile Apps</title>
+  <meta name="description" content="L in the Castle LLC is a software studio in Prishtina, Kosovo. We design and build dependable web and mobile apps (iOS &amp; Android) for founders and teams worldwide.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="L in the Castle — Software &amp; Mobile Apps">
+  <meta property="og:description" content="A software studio that designs and builds well-crafted web and mobile apps for web, iOS, and Android.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://linthecastle.com">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="L in the Castle — Software &amp; Mobile Apps">
+  <meta name="twitter:description" content="A software studio that designs and builds well-crafted web and mobile apps for web, iOS, and Android.">
+
+  <!-- Inline SVG favicon: indigo castle/L monogram -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%234f46e5'/%3E%3Cpath%20d='M9%208h3v3h2V8h3v3h2V8h3v6H9z'%20fill='white'/%3E%3Cpath%20d='M11%2014h10v8h6v3H11z'%20fill='white'/%3E%3C/svg%3E">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --tint:#f9fafb;
+      --ink:#111827;
+      --gray:#4b5563;
+      --gray-2:#6b7280;
+      --accent:#4f46e5;
+      --accent-dark:#4338ca;
+      --line:#e5e7eb;
+      --maxw:1080px;
+      --shadow-card:0 1px 2px rgba(17,24,39,.04), 0 8px 24px rgba(17,24,39,.06);
+      --shadow-hover:0 4px 8px rgba(17,24,39,.06), 0 20px 40px rgba(79,70,229,.12);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      margin-inline:auto;
+      padding-inline:24px;
+    }
+
+    /* ---- Focus ---- */
+    :focus-visible{
+      outline:2px solid var(--accent);
+      outline-offset:3px;
+      border-radius:4px;
+    }
+
+    /* ---- Buttons ---- */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-size:15px;
+      font-weight:600;
+      letter-spacing:.01em;
+      padding:12px 22px;
+      border-radius:10px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:background-color .18s ease, color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 1px 2px rgba(17,24,39,.08), 0 6px 16px rgba(79,70,229,.22);
+    }
+    .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+    .btn-primary:active{transform:translateY(0)}
+    .btn-ghost{
+      background:#fff;
+      color:var(--ink);
+      border-color:var(--line);
+    }
+    .btn-ghost:hover{border-color:#d1d5db;background:var(--tint)}
+
+    /* ---- Sticky header ---- */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.72);
+      -webkit-backdrop-filter:saturate(180%) blur(14px);
+      backdrop-filter:saturate(180%) blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      height:68px;
+    }
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      font-weight:700;
+      font-size:17px;
+      letter-spacing:-.01em;
+    }
+    .brand .mark{
+      width:30px;height:30px;flex:0 0 30px;
+      border-radius:8px;
+      display:block;
+      box-shadow:0 2px 6px rgba(79,70,229,.28);
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav-links a:not(.btn){
+      color:var(--gray);
+      font-size:15px;
+      font-weight:500;
+      padding:8px 12px;
+      border-radius:8px;
+      transition:color .15s ease, background-color .15s ease;
+    }
+    .nav-links a:not(.btn):hover{color:var(--ink);background:var(--tint)}
+    .nav-links .btn{padding:9px 18px}
+    .nav-sep{color:var(--line);user-select:none}
+
+    /* ---- Section rhythm ---- */
+    section{padding-block:clamp(64px,9vw,112px)}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      font-size:12.5px;
+      font-weight:700;
+      letter-spacing:.14em;
+      color:var(--accent);
+      text-transform:uppercase;
+      margin:0 0 18px;
+    }
+    .eyebrow::before{
+      content:"";
+      width:24px;height:2px;
+      background:var(--accent);
+      border-radius:2px;
+    }
+    h2{
+      font-size:clamp(28px,4vw,40px);
+      line-height:1.12;
+      letter-spacing:-.025em;
+      margin:0 0 16px;
+      font-weight:700;
+    }
+    .lead{
+      font-size:clamp(16px,1.6vw,18px);
+      color:var(--gray);
+      max-width:60ch;
+      margin:0;
+    }
+
+    /* ---- Hero ---- */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding-block:clamp(72px,12vw,140px);
+      background:
+        radial-gradient(60% 50% at 85% -10%, rgba(79,70,229,.10), transparent 70%),
+        radial-gradient(50% 45% at 0% 110%, rgba(79,70,229,.07), transparent 70%),
+        var(--bg);
+    }
+    /* faint grid texture */
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(to right, rgba(17,24,39,.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(17,24,39,.025) 1px, transparent 1px);
+      background-size:48px 48px;
+      -webkit-mask-image:radial-gradient(70% 60% at 50% 35%, #000, transparent 75%);
+      mask-image:radial-gradient(70% 60% at 50% 35%, #000, transparent 75%);
+      pointer-events:none;
+    }
+    .hero .wrap{position:relative}
+    .hero-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:600;
+      color:var(--gray);
+      background:#fff;
+      border:1px solid var(--line);
+      padding:6px 13px 6px 11px;
+      border-radius:999px;
+      margin-bottom:26px;
+      box-shadow:var(--shadow-card);
+    }
+    .hero-tag .dot{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(79,70,229,.16);
+    }
+    h1{
+      font-size:clamp(36px,6.2vw,64px);
+      line-height:1.04;
+      letter-spacing:-.035em;
+      font-weight:800;
+      margin:0 0 22px;
+      max-width:16ch;
+    }
+    h1 .grad{
+      background:linear-gradient(120deg,var(--accent),#7c73f0);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-lead{
+      font-size:clamp(17px,1.9vw,20px);
+      color:var(--gray);
+      max-width:58ch;
+      margin:0 0 34px;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* staggered load-in */
+    @media (prefers-reduced-motion:no-preference){
+      .reveal{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.21,.6,.35,1) forwards}
+      .d1{animation-delay:.05s}
+      .d2{animation-delay:.14s}
+      .d3{animation-delay:.23s}
+      .d4{animation-delay:.32s}
+    }
+    @keyframes rise{to{opacity:1;transform:none}}
+
+    /* ---- Services ---- */
+    .services{background:var(--tint);border-block:1px solid var(--line)}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      margin-top:48px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:30px 28px 32px;
+      box-shadow:var(--shadow-card);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+      border-color:#d6d9f5;
+    }
+    .card .ico{
+      width:50px;height:50px;
+      display:grid;place-items:center;
+      border-radius:13px;
+      background:linear-gradient(150deg, #eef2ff, #e0e7ff);
+      color:var(--accent);
+      margin-bottom:22px;
+      box-shadow:inset 0 0 0 1px rgba(79,70,229,.12);
+    }
+    .card .ico svg{width:26px;height:26px}
+    .card h3{
+      font-size:19px;
+      letter-spacing:-.015em;
+      margin:0 0 9px;
+      font-weight:700;
+    }
+    .card p{margin:0;color:var(--gray);font-size:15.5px}
+
+    /* ---- About ---- */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:clamp(32px,6vw,72px);
+      align-items:center;
+    }
+    .about-copy p{color:var(--gray);font-size:clamp(16px,1.6vw,17.5px);margin:0 0 18px;max-width:52ch}
+    .about-copy p:last-child{margin-bottom:0}
+    .stats{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .stat{
+      background:var(--tint);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:24px 22px;
+    }
+    .stat .n{
+      font-size:30px;
+      font-weight:800;
+      letter-spacing:-.03em;
+      color:var(--ink);
+      line-height:1;
+      margin-bottom:8px;
+    }
+    .stat .n span{color:var(--accent)}
+    .stat .l{font-size:14px;color:var(--gray-2);font-weight:500}
+
+    /* ---- Contact ---- */
+    .contact{background:var(--tint);border-block:1px solid var(--line)}
+    .contact .wrap{text-align:center}
+    .contact .eyebrow{justify-content:center}
+    .contact h2{max-width:18ch;margin-inline:auto}
+    .contact .lead{margin-inline:auto;margin-bottom:34px}
+    .email-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      font-size:clamp(18px,2.4vw,24px);
+      font-weight:700;
+      letter-spacing:-.02em;
+      color:#fff;
+      background:var(--accent);
+      padding:16px 30px;
+      border-radius:14px;
+      box-shadow:0 2px 4px rgba(17,24,39,.08), 0 14px 32px rgba(79,70,229,.24);
+      transition:background-color .18s ease, transform .18s ease;
+    }
+    .email-btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+    .email-btn svg{width:21px;height:21px}
+    .location{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top:24px;
+      color:var(--gray);
+      font-size:15px;
+      font-weight:500;
+    }
+    .location svg{width:17px;height:17px;color:var(--accent)}
+
+    /* ---- Footer ---- */
+    .site-footer{
+      background:var(--ink);
+      color:#e5e7eb;
+      padding-block:40px;
+    }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .footer-brand{
+      display:inline-flex;align-items:center;gap:11px;
+      font-weight:700;color:#fff;font-size:16px;letter-spacing:-.01em;
+    }
+    .footer-brand .mark{width:28px;height:28px;border-radius:7px}
+    .footer-inner small{color:#9ca3af;font-size:14px}
+
+    /* ---- Responsive ---- */
+    @media (max-width:720px){
+      .grid{grid-template-columns:1fr;gap:18px;margin-top:36px}
+      .about-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .nav{height:auto;padding-block:12px;flex-wrap:wrap}
+      .nav-links{width:100%;justify-content:flex-start}
+      .nav-sep{display:none}
+      .nav-links a:not(.btn){padding:7px 9px}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:380px){
+      .wrap{padding-inline:18px}
+      .nav-links{gap:2px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="L in the Castle — home">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect width="32" height="32" rx="7" fill="#4f46e5"/>
+            <path d="M9 8h3v3h2V8h3v3h2V8h3v6H9z" fill="#fff"/>
+            <path d="M11 14h10v8h6v3H11z" fill="#fff"/>
+          </svg>
+          <span>L in the Castle</span>
+        </a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <span class="nav-sep" aria-hidden="true">·</span>
+          <a href="#about">About</a>
+          <span class="nav-sep" aria-hidden="true">·</span>
+          <a href="#contact">Contact</a>
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-h1">
+      <div class="wrap">
+        <span class="hero-tag reveal d1">
+          <span class="dot" aria-hidden="true"></span>
+          Software studio · Prishtina, Kosovo
+        </span>
+        <h1 id="hero-h1" class="reveal d2">Software &amp; mobile apps,<br><span class="grad">built with craft.</span></h1>
+        <p class="hero-lead reveal d3">We are a small software studio that designs and ships dependable products for the web, iOS, and Android — partnering closely with founders and teams to turn ideas into real, well-made software.</p>
+        <div class="hero-actions reveal d4">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#services">See what we do</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services" aria-labelledby="services-h2">
+      <div class="wrap">
+        <p class="eyebrow">What we do</p>
+        <h2 id="services-h2">Services</h2>
+        <p class="lead">End-to-end product work — from the first sketch to a shipped, maintained application.</p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/>
+                <line x1="11" y1="18.5" x2="13" y2="18.5"/>
+              </svg>
+            </div>
+            <h3>App Development</h3>
+            <p>Native and cross-platform iOS &amp; Android apps — fast, polished, and built to last on every device.</p>
+          </article>
+
+          <article class="card">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 18a4 4 0 0 0 .4-7.98A5.5 5.5 0 0 0 7 9.5 4.5 4.5 0 0 0 7.5 18z"/>
+                <polyline points="9.5 13.5 11.5 15.5 14.5 11.5"/>
+              </svg>
+            </div>
+            <h3>Web &amp; Cloud</h3>
+            <p>Modern web apps and cloud-backed services — scalable backends, clean APIs, and reliable infrastructure.</p>
+          </article>
+
+          <article class="card">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9.5"/>
+                <circle cx="12" cy="12" r="3.2"/>
+                <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/>
+              </svg>
+            </div>
+            <h3>Product Design</h3>
+            <p>UX/UI design from idea to shipped product — thoughtful interfaces that feel obvious to use.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-h2">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-copy">
+            <p class="eyebrow">About</p>
+            <h2 id="about-h2">A studio for software that holds up.</h2>
+            <p>L in the Castle LLC designs and builds applications for web and mobile. We work side by side with founders and teams, treating every project as a real product — not a one-off deliverable — and sweating the details that make software dependable.</p>
+            <p>We're based in Prishtina, Kosovo, and work with clients anywhere. Whether you're shaping a first version or growing something live, we help you ship well-crafted software with confidence.</p>
+          </div>
+          <div class="stats" aria-hidden="false">
+            <div class="stat">
+              <div class="n">iOS &amp; <span>Android</span></div>
+              <div class="l">Native &amp; cross-platform</div>
+            </div>
+            <div class="stat">
+              <div class="n">Web<span>.</span></div>
+              <div class="l">Apps &amp; cloud services</div>
+            </div>
+            <div class="stat">
+              <div class="n">Design<span>.</span></div>
+              <div class="l">UX/UI, end to end</div>
+            </div>
+            <div class="stat">
+              <div class="n">Global<span>.</span></div>
+              <div class="l">Clients anywhere</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" aria-labelledby="contact-h2">
+      <div class="wrap">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-h2">Let's build something.</h2>
+        <p class="lead">Have a product in mind, or just want to talk through an idea? We'd love to hear from you.</p>
+        <a class="email-btn" href="mailto:info@linthecastle.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="m3.5 7 8.5 6 8.5-6"/>
+          </svg>
+          info@linthecastle.com
+        </a>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/>
+            <circle cx="12" cy="10" r="2.5"/>
+          </svg>
+          Prishtina, Kosovo
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-brand">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="7" fill="#4f46e5"/>
+          <path d="M9 8h3v3h2V8h3v3h2V8h3v6H9z" fill="#fff"/>
+          <path d="M11 14h10v8h6v3H11z" fill="#fff"/>
+        </svg>
+        L in the Castle LLC
+      </span>
+      <small>© 2026 L in the Castle LLC</small>
+    </div>
+  </footer>
+
+</body>
+</html>
